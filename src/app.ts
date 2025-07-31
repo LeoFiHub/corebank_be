@@ -30,6 +30,9 @@ mongoose
 
 // API Routes
 app.use('/api/pools', poolRoutes); // Mount pool routes
+app.get('/', (req: Request, res: Response) => {
+  res.json({ message: 'Hello from CoreBank API!' });
+});
 
 // Basic error handling middleware (for demonstration)
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
