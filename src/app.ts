@@ -2,6 +2,7 @@ import express, { Application, Request, Response, NextFunction } from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import poolRoutes from './routes/poolRoutes'; // Import routes
+import path from 'path';
 
 dotenv.config(); // Load environment variables from .env file
 
@@ -11,6 +12,7 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/corebank_d
 
 // Middleware
 app.use(express.json()); // Body parser for JSON requests
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Connect to MongoDB
 mongoose
