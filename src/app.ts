@@ -40,8 +40,12 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).send('Something broke!');
 });
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  console.log(`Access BTC pool listing at http://localhost:${PORT}/api/pools`);
-});
+// Only start server if run directly (not imported by Vercel)
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+    console.log(`Access BTC pool listing at http://localhost:${PORT}/api/pools`);
+  });
+}
+
+export default app;
